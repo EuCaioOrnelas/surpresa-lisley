@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Para Você</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #ffcccb;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        overflow: hidden;
+      }
+      .container {
+        animation: fadeIn 2s;
+      }
+      h1 {
+        font-size: 3rem;
+        color: #d63384;
+      }
+      #loveText {
+        font-size: 2rem;
+        color: #b30059;
+        margin-top: 20px;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes fall {
+        from {
+          transform: translateY(-100px);
+          opacity: 1;
+        }
+        to {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+      }
+      .heart {
+        position: absolute;
+        color: red;
+        font-size: 24px;
+        top: 0;
+        animation: fall 5s linear infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <audio autoplay loop>
+      <source src="die_with_a_smile.mp3" type="audio/mp3" />
+    </audio>
+    <div class="container">
+      <h1>Eu te amo ❤️</h1>
+      <div id="loveText">Eu te amo</div>
+    </div>
+    <script>
+      const loveWords = [
+        "Je t’aime",
+        "Ich liebe dich",
+        "Ti amo",
+        "Te quiero",
+        "Я тебя люблю",
+        "愛してる",
+        "사랑해",
+        "我愛你",
+        "Eu te amo",
+        "Ik hou van jou",
+        "Szeretlek",
+        "Jeg elsker dig",
+        "Kocham cię",
+        "Volim te",
+        "Te dua",
+        "Esmu iemīlējies",
+        "Es tevi mīlu",
+        "Miluji tě",
+        "Aš tave myliu",
+        "Ma armastan sind",
+        "Σ' αγαπώ",
+        "Te iubesc",
+        "Jeg elsker deg",
+        "Jag älskar dig",
+        "Minä rakastan sinua",
+        "Mi amas vin",
+        "Ek het jou lief",
+        "Ndagukunda",
+        "Ke a go rata",
+        "Ninakupenda",
+      ];
+
+      function changeLoveText() {
+        const loveText = document.getElementById("loveText");
+        let index = 0;
+        setInterval(() => {
+          loveText.textContent = loveWords[index];
+          index = (index + 1) % loveWords.length;
+        }, 2000);
+      }
+      changeLoveText();
+
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }
+      setInterval(createHeart, 300);
+    </script>
+  </body>
+</html>
